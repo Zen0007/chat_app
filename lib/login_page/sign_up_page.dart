@@ -18,8 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
   String emailUser = '';
   bool isLoding = false;
   String password = '';
-  final Color colors =
-      const Color.fromARGB(100, 128, 208, 199).withOpacity(0.5);
+  final Color colors = const Color.fromARGB(100, 128, 208, 19);
 
   void signUp() async {
     final isValid = _fromKey.currentState!.validate();
