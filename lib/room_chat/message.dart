@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_chat/dummy_data/chat_data.dart';
 
 class Message extends StatefulWidget {
-  const Message({super.key});
-
+  const Message({super.key, required this.contactName});
+  final String contactName;
   @override
   State<Message> createState() => _MessageState();
 }
@@ -10,7 +11,18 @@ class Message extends StatefulWidget {
 class _MessageState extends State<Message> {
   final _massageController = TextEditingController();
 
-  void _sumbitMassage() {}
+  @override
+  void dispose() {
+    _massageController.dispose();
+    super.dispose();
+  }
+
+  void addChat(String name, Map<String, String> chat) {
+    setState(() {
+      (contact["root"]!["contact"] as Map)[name].add(chat);
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +54,10 @@ class _MessageState extends State<Message> {
             ),
             IconButton(
               color: Colors.blue,
-              onPressed: _sumbitMassage,
+              onPressed: () => addChat(widget.contactName, {
+                "message": _massageController.text,
+                "date": "${DateTime.now()}"
+              }),
               icon: const Icon(Icons.send),
             )
           ],

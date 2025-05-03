@@ -72,6 +72,7 @@ class Home extends StatelessWidget {
   Drawer drawer() {
     return Drawer(
       backgroundColor: const Color.fromARGB(255, 190, 196, 195),
+      shadowColor: Colors.transparent,
       child: ListView(
         children: [
           DrawerHeader(

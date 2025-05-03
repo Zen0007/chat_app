@@ -52,9 +52,11 @@ class _RoomChatState extends State<RoomChat> {
       body: Column(
         children: [
           Expanded(
-            child: Chat(),
+            child: Chat(memberChat: widget.ownRoom,),
           ),
-          Message()
+          Message(
+            contactName: widget.ownRoom,
+          )
         ],
       ),
     );
