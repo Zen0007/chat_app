@@ -1,10 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_app_chat/home/home.dart';
-import 'package:flutter_app_chat/login_page/home_first.dart';
-import 'package:flutter_app_chat/secren_chat/chat_secren.dart';
-import 'package:flutter_app_chat/secren_chat/splash_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {

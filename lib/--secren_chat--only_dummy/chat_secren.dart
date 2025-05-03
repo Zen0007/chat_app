@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_chat/secren_chat/chat_massage.dart';
-import 'package:flutter_app_chat/secren_chat/massage.dart';
+import 'package:flutter_app_chat/--secren_chat--only_dummy/chat_massage.dart';
+import 'package:flutter_app_chat/--secren_chat--only_dummy/massage.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});

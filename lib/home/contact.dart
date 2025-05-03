@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_chat/room_chat/room_chat.dart';
 
 class Contact extends StatelessWidget {
-  const Contact({super.key, required this.name, this.text, this.dataTime});
+  const Contact(
+      {super.key,
+      required this.name,
+      required this.image,
+      this.text,
+      this.dataTime});
   final String name;
   final String? text;
   final String? dataTime;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +19,13 @@ class Contact extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       child: GestureDetector(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Container(
-            color: Colors.deepOrange[200],
-            child: Center(
-              child: Text(name),
-            ),
+          builder: (context) => RoomChat(
+            ownRoom: name,
+            image: image,
           ),
         )),
         child: Card(
-          color: Colors.blueAccent[100],
+          color: const Color.fromARGB(255, 204, 217, 236),
           child: SizedBox(
             height: 65,
             child: Row(
@@ -32,9 +37,9 @@ class Contact extends StatelessWidget {
                     width: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      image: const DecorationImage(
+                      image: DecorationImage(
                         image: AssetImage(
-                          "assets/images/graph.png",
+                          image,
                         ),
                         fit: BoxFit.fill,
                       ),
@@ -58,37 +63,31 @@ class Contact extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: Column(
+                    spacing: 5,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                            "$dataTime",
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: 17,
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5),
+                            child: Text(
+                              "$dataTime",
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w300,
+                                fontSize: 17,
+                              ),
                             ),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          )
                         ],
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-
-                          const SizedBox(
-                            width: 20,
-                          ),
                           Text(
                             "$text",
                             style: const TextStyle(
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w600,
                               fontSize: 15,
                             ),
                           ),

@@ -30,9 +30,12 @@ class ChatMassage extends StatelessWidget {
 
         final loadMassage = snapshot.data;
         return ListView.builder(
+          padding: EdgeInsets.only(bottom: 40),
+          reverse: true,
           itemCount: loadMassage!.length,
-          itemBuilder: (context, index) =>
-              Text("${snapshot.data![index]["text"]}"),
+          itemBuilder: (context, index) => Text(
+            "${snapshot.data![index]["text"]}",
+          ),
         );
       },
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_chat/dummy_data/contact_data.dart';
 import 'package:flutter_app_chat/home/contact.dart';
 
 class Home extends StatelessWidget {
@@ -35,7 +36,12 @@ class Home extends StatelessWidget {
                   const Expanded(
                     flex: 2,
                     child: Center(
-                      child: Text("CHAT"),
+                      child: Text(
+                        "CHAT",
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -55,6 +61,7 @@ class Home extends StatelessWidget {
               name: data[index]['name'],
               text: data[index]["text"],
               dataTime: data[index]["dateTime"],
+              image: data[index]["image"],
             );
           },
         ),
@@ -64,6 +71,7 @@ class Home extends StatelessWidget {
 
   Drawer drawer() {
     return Drawer(
+      backgroundColor: const Color.fromARGB(255, 190, 196, 195),
       child: ListView(
         children: [
           DrawerHeader(
@@ -72,47 +80,8 @@ class Home extends StatelessWidget {
             ),
             child: const Text("header"),
           )
-          
         ],
       ),
     );
   }
 }
-
-const List<Map<String, dynamic>> data = [
-  {
-    "name": "asta",
-    "text": "heiii",
-    "dateTime": "10.12",
-  },
-  {
-    "name": "yuno",
-    "text": "heiii",
-    "dateTime": "10.12",
-  },
-  {
-    "name": "lucifero",
-    "text": "heiii",
-    "dateTime": "10.12",
-  },
-  {
-    "name": "julius",
-    "text": "heiii",
-    "dateTime": "10.12",
-  },
-  {
-    "name": "yami",
-    "text": "heiii",
-    "dateTime": "10.12",
-  },
-  {
-    "name": "luck",
-    "text": "heiii",
-    "dateTime": "10.12",
-  },
-  {
-    "name": "luis",
-    "text": "heiii",
-    "dateTime": "10.12",
-  }
-];
