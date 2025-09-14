@@ -15,90 +15,79 @@ class Contact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child: GestureDetector(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => RoomChat(
-            ownRoom: name,
-            image: image,
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => RoomChat(
+          ownRoom: name,
+          image: image,
+        ),
+      )),
+      child: Container(
+        padding: EdgeInsets.only(bottom: 10, top: 10),
+        margin: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.elliptical(20, 20),
+            bottomRight: Radius.elliptical(20, 20),
           ),
-        )),
-        child: Card(
-          color: const Color.fromARGB(255, 204, 217, 236),
-          child: SizedBox(
-            height: 65,
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      image: DecorationImage(
-                        image: AssetImage(
-                          image,
-                        ),
-                        fit: BoxFit.fill,
-                      ),
+          color: Colors.blue[50],
+        ),
+        child: Row(
+          spacing: 2,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 15),
+              child: Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  image: DecorationImage(
+                    image: AssetImage(
+                      image,
                     ),
+                    fit: BoxFit.fill,
                   ),
                 ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        name,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
+              ),
+            ),
+            Column(
+              spacing: 2.7,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  name.toUpperCase(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 15,
                   ),
                 ),
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    spacing: 5,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child: Text(
-                              "$dataTime",
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 17,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            "$text",
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                Text(
+                  "$text",
+                  style: const TextStyle(
+                    fontSize: 15,
                   ),
                 ),
               ],
             ),
-          ),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      "$dataTime",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

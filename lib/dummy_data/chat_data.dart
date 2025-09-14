@@ -11,7 +11,129 @@ final contact = {
     "email": "root@gmail.com",
     "contact": {
       "asta": [
-        {"message": "you", "date": "${DateTime.now()}"}
+        {
+          "message":
+              "you too  sssssssssssssssssssssss1111111111111111111111111111111111111",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too ",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too ",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too ",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too ",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too  sssssssssssssssssssssss",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
+        {
+          "message":
+              "you too  ssssssssssssssssss 11111111111111111111111111111111111111111111111111111111111111111111111111111111111sssss",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message": "you too ",
+          "date": "${DateTime.now()}",
+          "isMe": true,
+          "userName": "yuno"
+        },
+        {
+          "message":
+              "you too  ssssssssssssssssssssssseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "date": "${DateTime.now()}",
+          "isMe": false,
+          "userName": "yuno"
+        },
       ],
       "yuno": [],
     },
@@ -23,6 +145,11 @@ final infoContact = {
   "yuno": "assets/images/graph.png",
 };
 
+void addChat(String name, Map<String, String> chat) {
+  print((contact["root"]!["contact"] as Map)[name]);
+  (contact["root"]!["contact"] as Map)[name].add(chat);
+}
+
 List<ContactData> dataConatct() {
   Map<String, List> data = contact["root"]!["contact"] as Map<String, List>;
   List<ContactData> result = [];
@@ -32,8 +159,6 @@ List<ContactData> dataConatct() {
 
   return result;
 }
-
-
 
 List getChat(String name) {
   final contacts = contact["root"]!["contact"] as Map;

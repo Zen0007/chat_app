@@ -19,6 +19,7 @@ class _MassageUserState extends State<MassageUser> {
     super.dispose();
   }
 
+  // ignore: unused_element
   void _sumbitMassage() async {
     try {
       final enterMassage = _massageController.text;
@@ -94,7 +95,7 @@ class _MassageUserState extends State<MassageUser> {
             ),
             IconButton(
               color: Colors.blue,
-              onPressed: _sumbitMassage,
+              onPressed: () {},
               icon: const Icon(Icons.send),
             )
           ],

@@ -15,13 +15,18 @@ class _RoomChatState extends State<RoomChat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 75, 146, 252),
-        automaticallyImplyLeading: false,
-        titleSpacing: 0.0,
-        title: Padding(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: Padding(
           padding: EdgeInsets.zero,
-          child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              // borderRadius: BorderRadius.only(
+              //   bottomLeft: Radius.elliptical(50, 10),
+              //   bottomRight: Radius.elliptical(50, 10),
+              // ),
+              color: Colors.white38,
+            ),
             child: Row(
               spacing: 10,
               children: [
@@ -48,11 +53,13 @@ class _RoomChatState extends State<RoomChat> {
           ),
         ),
       ),
-      backgroundColor: Colors.cyan,
+      backgroundColor: Colors.blueAccent[100],
       body: Column(
         children: [
           Expanded(
-            child: Chat(memberChat: widget.ownRoom,),
+            child: Chat(
+              memberChat: widget.ownRoom,
+            ),
           ),
           Message(
             contactName: widget.ownRoom,

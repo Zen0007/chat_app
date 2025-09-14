@@ -17,13 +17,6 @@ class _MessageState extends State<Message> {
     super.dispose();
   }
 
-  void addChat(String name, Map<String, String> chat) {
-    setState(() {
-      (contact["root"]!["contact"] as Map)[name].add(chat);
-    });
-
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,9 +47,11 @@ class _MessageState extends State<Message> {
             ),
             IconButton(
               color: Colors.blue,
-              onPressed: () => addChat(widget.contactName, {
-                "message": _massageController.text,
-                "date": "${DateTime.now()}"
+              onPressed: () => setState(() {
+                addChat(widget.contactName, {
+                  "message": _massageController.text,
+                  "date": "${DateTime.now()}"
+                });
               }),
               icon: const Icon(Icons.send),
             )

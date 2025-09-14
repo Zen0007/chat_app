@@ -20,8 +20,11 @@ class Home extends StatelessWidget {
             padding: const EdgeInsets.only(right: 10, left: 10, top: 10),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.blueAccent,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.elliptical(50, 10),
+                  bottomRight: Radius.elliptical(50, 10),
+                ),
+                color: Colors.white54,
               ),
               width: size.width * 0.5,
               height: size.height * 0.5,
@@ -53,9 +56,10 @@ class Home extends StatelessWidget {
       drawer: drawer(),
       backgroundColor: Colors.blueAccent[100],
       body: Padding(
-        padding: const EdgeInsets.only(top: 15),
+        padding: const EdgeInsets.only(top: 15, bottom: 20),
         child: ListView.builder(
           itemCount: data.length,
+          physics: ScrollPhysics(),
           itemBuilder: (context, index) {
             return Contact(
               name: data[index]['name'],
@@ -71,16 +75,15 @@ class Home extends StatelessWidget {
 
   Drawer drawer() {
     return Drawer(
-      backgroundColor: const Color.fromARGB(255, 190, 196, 195),
-      shadowColor: Colors.transparent,
+      backgroundColor: Colors.white70,
       child: ListView(
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blueAccent[100],
+              color: Colors.blueAccent[200],
             ),
             child: const Text("header"),
-          )
+          ),
         ],
       ),
     );
