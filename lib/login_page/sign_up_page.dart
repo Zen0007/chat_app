@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,7 +10,6 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final _firebase = FirebaseAuth.instance;
   final _fromKey = GlobalKey<FormState>();
   String nameUser = '';
   String emailUser = '';
@@ -28,12 +25,6 @@ class _SignUpPageState extends State<SignUpPage> {
       setState(() {
         isLoding = true;
       });
-      final authLogin = await _firebase.createUserWithEmailAndPassword(
-        email: emailUser,
-        password: password,
-      );
-
-      final userId = FirebaseAuth.instance.currentUser!;
 
       final apiUrl = Uri.parse(
           'https://chat-app-8122b-default-rtdb.asia-southeast1.firebasedatabase.app/userData.json');
@@ -42,23 +33,19 @@ class _SignUpPageState extends State<SignUpPage> {
         headers: {"Content-Type": "application/json"},
         body: json.encode(
           {
-            "id": userId.uid,
+            "id": "",
             "userName": nameUser,
             "email": emailUser,
           },
         ),
       );
-
-      debugPrint("$authLogin");
-    } on FirebaseAuthException catch (e) {
-      if (e.code == "email-already-in-use") {
-        AlertDialog.adaptive(
-          title: const Text('email is alreadu in use'),
-          actions: [
-            FloatingActionButton(onPressed: () => Navigator.of(context).pop)
-          ],
-        );
-      }
+    } catch (e) {
+      AlertDialog.adaptive(
+        title: const Text('email is alreadu in use'),
+        actions: [
+          FloatingActionButton(onPressed: () => Navigator.of(context).pop)
+        ],
+      );
     }
     setState(() {
       isLoding = false;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_chat/dummy_data/chat_data.dart';
+import 'package:flutter_app_chat/servis/router/send_message.dart';
 
 class Message extends StatefulWidget {
   const Message({super.key, required this.contactName});
@@ -10,10 +10,18 @@ class Message extends StatefulWidget {
 
 class _MessageState extends State<Message> {
   final _massageController = TextEditingController();
+  final sendMessage = SendMessage();
+
+  @override
+  void initState() {
+    super.initState();
+    sendMessage.connect();
+  }
 
   @override
   void dispose() {
     _massageController.dispose();
+    sendMessage.channel.sink.close();
     super.dispose();
   }
 
@@ -47,11 +55,11 @@ class _MessageState extends State<Message> {
             ),
             IconButton(
               color: Colors.blue,
-              onPressed: () => setState(() {
-                addChat(widget.contactName, {
-                  "message": _massageController.text,
-                  "date": "${DateTime.now()}"
-                });
+              onPressed: () => sendMessage.send({
+                "sender": "",
+                "receiver": "",
+                "text": _massageController.text,
+                "date": DateTime.now(),
               }),
               icon: const Icon(Icons.send),
             )

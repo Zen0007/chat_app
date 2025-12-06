@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_chat/room_chat/room_chat.dart';
 
-class Contact extends StatelessWidget {
+class Contact extends StatefulWidget {
   const Contact(
       {super.key,
       required this.name,
@@ -14,12 +14,24 @@ class Contact extends StatelessWidget {
   final String image;
 
   @override
+  State<Contact> createState() => _ContactState();
+}
+
+class _ContactState extends State<Contact> {
+
+
+
+
+
+
+  
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => RoomChat(
-          ownRoom: name,
-          image: image,
+          ownRoom: widget.name,
+          image: widget.image,
         ),
       )),
       child: Container(
@@ -44,7 +56,7 @@ class Contact extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   image: DecorationImage(
                     image: AssetImage(
-                      image,
+                      widget.image,
                     ),
                     fit: BoxFit.fill,
                   ),
@@ -56,14 +68,14 @@ class Contact extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  name.toUpperCase(),
+                  widget.name.toUpperCase(),
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 15,
                   ),
                 ),
                 Text(
-                  "$text",
+                  widget.text ?? "",
                   style: const TextStyle(
                     fontSize: 15,
                   ),
@@ -77,7 +89,7 @@ class Contact extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: Text(
-                      "$dataTime",
+                      widget.dataTime ?? "",
                       style: const TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 17,
