@@ -1,0 +1,71 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_app_chat/servis/router/send_message.dart';
+
+class Message extends StatefulWidget {
+  const Message({super.key, required this.contactName});
+  final String contactName;
+  @override
+  State<Message> createState() => _MessageState();
+}
+
+class _MessageState extends State<Message> {
+  final _massageController = TextEditingController();
+  final sendMessage = SendMessage();
+
+  @override
+  void initState() {
+    super.initState();
+    sendMessage.connect();
+  }
+
+  @override
+  void dispose() {
+    _massageController.dispose();
+    sendMessage.channel.sink.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 15,
+        right: 15,
+        bottom: 14,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(40)),
+          color: const Color.fromARGB(255, 221, 217, 217),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: TextField(
+                  controller: _massageController,
+                  textCapitalization: TextCapitalization.sentences,
+                  autocorrect: true,
+                  enableSuggestions: true,
+                  decoration:
+                      const InputDecoration(labelText: "send a massage..."),
+                ),
+              ),
+            ),
+            IconButton(
+              color: Colors.blue,
+              onPressed: () => sendMessage.send({
+                "sender": "",
+                "receiver": "",
+                "text": _massageController.text,
+                "date": DateTime.now(),
+              }),
+              icon: const Icon(Icons.send),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

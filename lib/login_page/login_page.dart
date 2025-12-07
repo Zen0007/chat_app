@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,13 +8,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _firebase = FirebaseAuth.instance;
   final _fromKey = GlobalKey<FormState>();
   String emailUser = '';
   bool isLoding = false;
   String password = '';
-  final Color colors =
-      const Color.fromARGB(100, 128, 208, 199).withOpacity(0.5);
+  final Color colors = const Color.fromARGB(100, 128, 208, 199).withAlpha(50);
 
   void _login() async {
     final validate = _fromKey.currentState!.validate();
@@ -25,21 +22,16 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         isLoding = true;
       });
-      final authLogin = await _firebase.signInWithEmailAndPassword(
-          email: emailUser, password: password);
-      debugPrint("$authLogin");
       if (!mounted) {
         return;
       }
-    } on FirebaseAuthException catch (e) {
-      if (e.code == "email-already-in-use") {
-        AlertDialog.adaptive(
-          title: Text(e.message ?? 'Authhenticaton is failed'),
-          actions: [
-            FloatingActionButton(onPressed: () => Navigator.of(context).pop)
-          ],
-        );
-      }
+    } catch (e) {
+      AlertDialog.adaptive(
+        title: Text(e.toString()),
+        actions: [
+          FloatingActionButton(onPressed: () => Navigator.of(context).pop)
+        ],
+      );
     }
   }
 
