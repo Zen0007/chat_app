@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_chat/home/home.dart';
+import 'package:flutter_app_chat/room_chat/room_chat.dart';
 
 
 void main() async {
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       //     }
       //   },
       // ),
-      home: Home(),
+      home: RoomChat(ownRoom: "Asta", image: null),
     );
   }
 }

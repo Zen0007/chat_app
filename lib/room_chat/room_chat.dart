@@ -5,7 +5,7 @@ import 'package:flutter_app_chat/room_chat/message.dart';
 class RoomChat extends StatefulWidget {
   const RoomChat({super.key, required this.ownRoom, required this.image});
   final String ownRoom;
-  final String image;
+  final String? image;
 
   @override
   State<RoomChat> createState() => _RoomChatState();
@@ -36,11 +36,12 @@ class _RoomChatState extends State<RoomChat> {
                     Icons.arrow_back,
                   ),
                 ),
-                Image.asset(
-                  widget.image,
-                  width: 50,
-                  height: 50,
-                ),
+                if (widget.image != null)
+                  Image.asset(
+                    widget.image!,
+                    width: 50,
+                    height: 50,
+                  ),
                 Text(
                   widget.ownRoom,
                   style: const TextStyle(
